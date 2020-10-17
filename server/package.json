@@ -1,0 +1,23 @@
+{
+  "name": "personal-brand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhi5415/personal-brand.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhi5415/personal-brand/issues"
+  },
+  "homepage": "https://github.com/Abhi5415/personal-brand#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.6.0"
+  }
+}
