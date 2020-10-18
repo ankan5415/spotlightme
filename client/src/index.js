@@ -1,10 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "./css/app.min.css"
+
+import App from "./App.js";
+
+import "./styles/styles.css"
+import "./styles/fonts.css"
+// import "./icons.css"
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, fas)
+
+
+
 
 ReactDOM.render(
-    // <App />,
-    <div />,
+
+    <App />,
+    // <h1>test</h1>,
   document.getElementById("root")
 );

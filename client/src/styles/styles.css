@@ -1,0 +1,165 @@
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  /* z-index: 1; */
+  top: 0;
+  overflow-x: hidden;
+  /* padding-top: 20px; */
+}
+
+/* left side */
+.left {
+  color: #efefef;
+  left: 0;
+  position: fixed;
+}
+
+.left h1 {
+  font-family: "Roboto Slab", serif;
+  padding-bottom: 10px;
+}
+
+.bg-img::before {
+  content: "";
+  background: #185a9d;
+  background-image: linear-gradient(to left top, #12c2e9, #c471ed, #f64f59);
+  opacity: 0.55;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+}
+
+.bg-img {
+  background: url("../img/profile_image.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 50%;
+}
+
+.bg-img:hover {
+  display: block;
+  opacity: 0.9;
+}
+
+.centered {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+}
+
+.btn-group i {
+  font-size: 2em;
+  padding: 7px;
+}
+
+#btn {
+  color: white;
+  opacity: 0.8;
+  transition: 0.3s;
+  padding: 0px 2px 0px 2px;
+}
+
+#btn:hover {
+  opacity: 1;
+}
+
+.left p {
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  margin-block-end: 0em;
+}
+
+/* right side */
+.right {
+  right: 0;
+  background-color: white;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+.inner {
+  margin: 50px;
+}
+
+#title {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to right, #185a9d 0%, purple 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content {
+  width: 75%;
+  padding-left: 10px;
+  padding-bottom: 50px;
+  display: inline-block;
+  vertical-align: top;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  /* display: inline-block;
+    padding: 0;
+    margin: 0 0 40px;
+    font-weight: 300;
+    line-height: 1.5;
+    vertical-align: top;*/
+}
+
+/* general customization */
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  line-height: 1.5;
+}
+
+a {
+  color: #4b0082;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* visited link */
+a:visited {
+  color: #4b0082;
+}
+
+/* mouse over link */
+a:hover {
+  color: #483d8b;
+}
+
+ul.description {
+  margin-block-start: 0em;
+  padding-left: 0px;
+}
+
+.description li {
+  line-height: 1.5;
+}
+
+.sub {
+  font-size: small;
+}
+
+#experience a {
+  color: black;
+}
+
+#experience a:hover {
+  color: #483d8b;
+}
