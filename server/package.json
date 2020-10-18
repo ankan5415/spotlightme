@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Abhi5415/personal-brand#readme",
   "dependencies": {
+    "airtable": "^0.10.0",
     "express": "^4.17.1",
     "serverless-http": "^2.6.0"
   }
