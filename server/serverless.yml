@@ -11,9 +11,9 @@
 #
 # Happy Coding!
 
-service: person-brand
+service: backend
 # app and org for use with dashboard.serverless.com
-app: person-brand
+app: spotlightme
 org: abhi5415
 
 # You can pin your service to only deploy with a specific Serverless version
