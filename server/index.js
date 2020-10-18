@@ -1,79 +1,57 @@
 const serverless = require("serverless-http");
 const express = require("express");
-const Airtable = require("airtable");
 const app = express();
-const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
-  "appez3evloomAtLPX"
-);
+const s3 = require("./controllers/s3");
+const helper = require("./controllers/helper");
+const airtable = require("./controllers/airtable");
+const ttl = 5000;
 
-const getAboutData = () => {
-  return new Promise((res, rej) => {
-    base("About")
-      .select({
-        view: "Grid view",
-      })
-      .firstPage((err, records) => {
-        if (err) {
-          console.error(err);
-          rej(err);
-        }
-        let obj = records.map((record) => {
-          return {
-            name: record.get("Name"),
-            type: record.get("Type"),
-            display: record.get("Display"),
-          };
-        });
+const queryData = async (bucketKeys) => {
+  // delete all existing files
+  for (let i = 0; i < bucketKeys.length; i++) {
+    await s3.deleteBucketObject(bucketKeys[i]);
+  }
 
-        res(obj);
-      });
-  });
+  // add new file
+  // console.log("Requerying");
+  const aboutObj = await airtable.getAboutData();
+  const exprObj = await airtable.getExperienceData();
+  const result = { about: aboutObj, experience: exprObj };
+
+  await s3.addBucketObject(result);
+
+  return result;
 };
 
-const getExperienceData = () => {
-  return new Promise((res, rej) => {
-    base("Experience")
-      .select({
-        view: "Grid view",
-      })
-      .firstPage((err, records) => {
-        if (err) {
-          console.error(err);
-          rej(err);
-        }
-        let obj = records.map((record) => {
-          return {
-            name: record.get("Name"),
-            type: record.get("Type"),
-            role: record.get("Role"),
-            experience: record.get("Experience"),
-            location: record.get("Location"),
-            awards: record.get("Awards"),
-            technologies: record.get("Technologies"),
-            startDate: record.get("Start Date"),
-            end: record.get("End Date"),
-            status: record.get("Status"),
-            display: record.get("Display"),
-            link: record.get("Link"),
-          };
-        });
+const resolver = async () => {
+  let bucketKeys = await s3.allBucketKeys();
 
-        res(obj);
-      });
-  });
+  let result = {};
+  if (bucketKeys.length == 0) {
+    result = await queryData(bucketKeys);
+  } else {
+    let lastQuery = parseInt(bucketKeys[0].split(".")[0]);
+
+    if (helper.getTimeInMs() - ttl > lastQuery) {
+      result = await queryData(bucketKeys);
+    } else {
+      result = await s3.readObject(bucketKeys[0]);
+    }
+  }
+
+  return result;
 };
 
 app.get("/", async (req, res) => {
   try {
-    const aboutObj = await getAboutData();
-    const exprObj = await getExperienceData();
-
-    res.send({ about: aboutObj, exprience: exprObj });
+    const result = await resolver();
+    res.send(result);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 });
 
-// app.listen(8080);
+app.listen(8080);
 
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
