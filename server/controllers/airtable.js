@@ -43,7 +43,7 @@ const getExperienceData = () => {
             name: record.get("Name"),
             type: record.get("Type"),
             role: record.get("Role"),
-            experience: record.get("Experience"),
+            description: record.get("Experience"),
             location: record.get("Location"),
             awards: record.get("Awards"),
             technologies: record.get("Technologies"),

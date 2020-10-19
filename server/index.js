@@ -6,21 +6,18 @@ const helper = require("./controllers/helper");
 const airtable = require("./controllers/airtable");
 const ttl = 5000;
 
-const queryData = async (bucketKeys) => {
-  // delete all existing files
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
-  // add new file
-  // console.log("Requerying");
+const queryData = async (bucketKeys) => {
   const aboutObj = await airtable.getAboutData();
   const exprObj = await airtable.getExperienceData();
-  const result = { about: aboutObj, experience: exprObj };
+  const result = { about: aboutObj, experiences: exprObj };
 
   await s3.addBucketObject(result);
 
-  return result;
-};
-
-const resolver = async () => {
   return result;
 };
 

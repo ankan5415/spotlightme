@@ -1,4 +1,8 @@
 /* Split the screen in half */
+
+body {
+  font-family: "monospace";
+}
 .split {
   height: 100%;
   width: 50%;
@@ -14,10 +18,10 @@
   color: #efefef;
   left: 0;
   position: fixed;
+  font-family: "monospace";
 }
 
 .left h1 {
-  font-family: "Roboto Slab", serif;
   padding-bottom: 10px;
 }
 
@@ -84,7 +88,7 @@ h1 {
   right: 0;
   background-color: white;
   scroll-behavior: smooth;
-  font-family: "Roboto", sans-serif;
+  font-family: "monospace";
 }
 
 .inner {
@@ -101,6 +105,8 @@ h1 {
   background: linear-gradient(to right, #185a9d 0%, purple 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: small;
+  font-style: italic;
 }
 
 .content {
