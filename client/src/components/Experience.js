@@ -23,12 +23,10 @@ function Experience(props) {
 
     let processed = filtered.map((desc, index) => {
       return (
-        <div key={index}>
-          <h3>
-            {desc.name}
+        <div key={index} className="seperator">
+          <p><a href="index.html">{desc.name}
             <span className="role">{desc.role}</span>
-            <div className="time"> {desc.location} </div>
-          </h3>
+            <div className="time"> {desc.location} </div></a></p>
           <p>
             {desc.description} - {desc.technologies} -{" "}
             {ConvertDate(desc.startDate)}{" "}
@@ -39,7 +37,7 @@ function Experience(props) {
     });
 
     DisplayAllExperiences.push(
-      <div key={count}>
+      <div>
         <div id="title">{status}</div>
         <div className="content">{processed}</div>
       </div>

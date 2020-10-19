@@ -2,7 +2,6 @@ import React from "react";
 
 function About(props) {
   let types = [];
-  //   console.log(props.skills);
 
   for (let skill of props.skills) {
     if (types.indexOf(skill.type) === -1) {
@@ -38,6 +37,7 @@ function About(props) {
         knowledge to create working products and bring about positive societal
         change.
       </div>
+      <div id="title"></div>
       <div className="content">{DisplayAllSkills}</div>
     </div>
   );

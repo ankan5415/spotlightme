@@ -5,8 +5,10 @@ function SplitLeft() {
   return (
     <div className="split left bg-img">
       <div className="centered">
-        <h1 className="main-header">Hey, I'm Abhinav,</h1>
-        <h1>
+        <div className="main-header">
+        <h1>Hey, I'm Abhinav,</h1>
+        </div>
+        <h1 className="side-header">
           a <b className="titlebold">Software Engineer </b> in Toronto, CA
         </h1>
 
