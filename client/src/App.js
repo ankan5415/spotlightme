@@ -16,7 +16,6 @@ export default function App() {
       setData(res.data);
     };
     fetchData();
-    // code to run on component mount
   }, []);
 
   return (
