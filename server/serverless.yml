@@ -17,6 +17,8 @@ functions:
       AIRTABLE_KEY: ${param:AIRTABLE_KEY}
       ACCESS_KEY: ${param:ACCESS_KEY}
       SECRET_KEY: ${param:SECRET_KEY}
+      BUCKET: ${param:BUCKET}
+
     # iamRoleStatements:
     #   - Effect: Allow
     #   Action:
