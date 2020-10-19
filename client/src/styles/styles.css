@@ -163,3 +163,17 @@ ul.description {
 #experience a:hover {
   color: #483d8b;
 }
+
+.role {
+  font-weight: normal;
+  color: rgba(94, 94, 94, 0.493);
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.time {
+  /* float: left; */
+  font-style: italic;
+  font-weight: 300;
+}
