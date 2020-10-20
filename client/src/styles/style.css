@@ -51,7 +51,7 @@ a {
   left: 0;
   background: #185a9d;
   background-image: linear-gradient(to left top, #43cea2, #185a9d);
-  opacity: 0.7;
+  opacity: 0.4;
 }
 
 .left-inner,
@@ -256,23 +256,23 @@ a {
 }
 
 .right .experience .exp-item:last-of-type {
-  margin-bottom: 0;
+  margin-bottom: 4vh;
 }
 
 .right .experience .exp-item .job {
   margin: 0;
   font-weight: 700;
+  margin-bottom: 0vh;
 }
 
 .right .experience .exp-item .duration {
   font-size: 13px;
   font-weight: 200;
-  float: right;
   color: #aaa;
   text-transform: uppercase;
   position: relative;
   top: 1px;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 340px) {
@@ -353,5 +353,23 @@ a {
 }
 
 .skill-category strong {
-  font-weight: 300;
+  font-weight: 400;
+}
+.skill {
+  background-color: #2a54f5;
+  background-image: -webkit-linear-gradient(0deg, #2a54f5 0%, #29af90 100%);
+  background-image: linear-gradient(0deg, #2a54f5 0%, #29af90 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.technology {
+  font-size: 12px;
+  padding: 2px 5px 2px 5px;
+  margin: 3px;
+  border: 1px solid #91d5ff;
+  border-radius: 3px;
+  background-color: #e6f7ff;
+  color: #1890ff;
 }

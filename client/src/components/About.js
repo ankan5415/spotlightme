@@ -17,13 +17,7 @@ function About(props) {
     );
     const processed = filtered.map((skill, index) => {
       return (
-        <span
-          id="skill"
-          key={index}
-          style={{
-            color: "blue",
-          }}
-        >
+        <span id="skill" key={index} className="skill">
           {" "}
           <b>&#8226;</b> {skill.name}
         </span>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Chip } from "@material-ui/core";
 
 const ConvertDate = (DateString) => {
   const res = new Date(DateString);
@@ -8,17 +7,11 @@ const ConvertDate = (DateString) => {
 
 const CreateTags = (technologies, index) => {
   const tech = technologies ? technologies.split(", ") : [];
-  console.log(tech);
+
   return tech.map((elt) => {
     return (
-      <span style={{ padding: "2px" }} key={index}>
-        <Chip
-          variant="outlined"
-          color="primary"
-          clickable={true}
-          size="small"
-          label={elt}
-        />
+      <span className="technology" key={index}>
+        {elt}
       </span>
     );
   });
@@ -44,26 +37,29 @@ function Experience(props) {
 
     let processed = filtered.map((desc, index) => {
       return (
-        //&mdash;
+        <div className="item2">
+          <div className="exp-item">
+            <div className="job">
+              <a className="company strike" href={desc.link} target="_blank">
+                {desc.name}
+              </a>
+              {desc.status === "Education" && (
+                <div className="title">{desc.role}</div>
+              )}
 
-        <div className="exp-item">
-          <div className="job">
-            <a className="company strike" href={desc.link} target="_blank">
-              {desc.name}
-            </a>
-            <div className="duration">
-              {ConvertDate(desc.startDate)}
-              {desc.status === "Project" &&
-                desc.end &&
-                ` ~ ${ConvertDate(desc.end)}`}
-              {desc.status === "Work" &&
-                (desc.end ? ` ~ ${ConvertDate(desc.end)}` : " ~ Present")}
+              <div className="duration">
+                {ConvertDate(desc.startDate)}
+                {desc.status === "Project" &&
+                  desc.end &&
+                  ` ~ ${ConvertDate(desc.end)}`}
+                {desc.status === "Work" &&
+                  (desc.end ? ` ~ ${ConvertDate(desc.end)}` : " ~ Present")}
+              </div>
             </div>
-          </div>
-          <div className="title">{desc.role}</div>
-          <div className="description">
-            <p>{desc.description}</p>
-            {CreateTags(desc.technologies, index)}
+            <div className="description">
+              <p>{desc.description}</p>
+              {CreateTags(desc.technologies, index)}
+            </div>
           </div>
         </div>
       );

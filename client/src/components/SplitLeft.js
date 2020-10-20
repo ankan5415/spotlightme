@@ -7,9 +7,11 @@ function SplitLeft() {
       <div className="bg-img"></div>
       <div className="left-inner">
         <div className="info">
-          <h2 className="name">Hi! I'm Abhinav,</h2>
-          <div className="subtext">A Software Engineer in Toronto, CA</div>
-          <div className="jobStatus">Student at University of Waterloo</div>
+          <h2 className="name">Heyo, I'm Abhinav</h2>
+          <div className="subtext">I love building things and writing code</div>
+          <div className="jobStatus">
+            Software Engineering at University of Waterloo
+          </div>
           <div className="social-links">
             <a href="https://www.linkedin.com/in/abhinavboyed/" target="_blank">
               <FontAwesomeIcon icon={["fab", "linkedin"]} className="fa" />
