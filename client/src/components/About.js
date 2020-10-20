@@ -12,33 +12,44 @@ function About(props) {
   let DisplayAllSkills = [];
   let count = 0;
   for (let type of types) {
-    let filtered = props.skills.filter((item) => item.type === type);
+    let filtered = props.skills.filter(
+      (item) => item.type === type && item.display
+    );
     const processed = filtered.map((skill, index) => {
       return (
-        <span id="skill" key={index}>
-          {skill.name} -
+        <span
+          id="skill"
+          key={index}
+          style={{
+            color: "blue",
+          }}
+        >
+          {" "}
+          <b>&#8226;</b> {skill.name}
         </span>
       );
     });
     DisplayAllSkills.push(
-      <div key={count}>
-        <b>{type}</b> : {processed}
+      <div className="skill-category" key={count}>
+        <strong>{type} &nbsp;</strong>
+        <span>{processed}</span>
       </div>
     );
     count += 1;
   }
 
   return (
-    <div>
-      <div id="title">About</div>
+    <div className="introduction">
+      <h4>Intro</h4>
       <div className="content">
-        I am a creator who loves to tinker and build. Whether my projects are
-        hardware or software implementations, I am passionate about applying my
-        knowledge to create working products and bring about positive societal
-        change.
+        <p className="intro-p">
+          I am a creator who loves to tinker and build. Whether my projects are
+          hardware or software implementations, I am passionate about applying
+          my knowledge to create working products and bring about positive
+          societal change.
+        </p>
+        <div className="content">{DisplayAllSkills}</div>
       </div>
-      <div id="title"></div>
-      <div className="content">{DisplayAllSkills}</div>
     </div>
   );
 }
