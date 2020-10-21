@@ -3,10 +3,10 @@ import About from "./About.js";
 import Experience from "./Experience.js";
 
 function SplitRight(props) {
-  //   console.log(props.info.about);
+  // console.log(props);
   return (
-    <div className="right">
-      <div className="right-inner">
+    <div className='right'>
+      <div className='right-inner'>
         <About skills={props.info.about} />
         <Experience experiences={props.info.experiences} />
       </div>

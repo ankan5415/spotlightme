@@ -9,10 +9,10 @@ import "./styles/style.css";
 // import "./styles/styles.css"
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, fas);
+library.add(faLinkedin, faGithub, faEnvelope);
 
 ReactDOM.render(
   <App />,
