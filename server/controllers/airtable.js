@@ -18,6 +18,8 @@ const getAboutData = () => {
           return {
             name: record.get("Name"),
             type: record.get("Type"),
+            displayMethod: record.get("Display Method"),
+            isIcon: record.get("Is Icon"),
             display: record.get("Display"),
           };
         });

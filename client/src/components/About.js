@@ -1,36 +1,37 @@
 import React from "react";
 
 function About(props) {
-  let types = [];
+  let data = {};
 
-  for (let skill of props.skills) {
-    if (types.indexOf(skill.type) === -1) {
-      types.push(skill.type);
+  const skills = props.skills.filter(
+    (item) => !item.hasOwnProperty("displayMethod") && item.display
+  );
+
+  skills.forEach((skill) => {
+    if (!data.hasOwnProperty(skill.type)) {
+      data[skill.type] = [skill.name];
+    } else {
+      data[skill.type].push(skill.name);
     }
-  }
+  });
 
-  let DisplayAllSkills = [];
-  let count = 0;
-  for (let type of types) {
-    let filtered = props.skills.filter(
-      (item) => item.type === type && item.display
-    );
-    const processed = filtered.map((skill, index) => {
+  const DisplayAllSkills = Object.entries(data).map(
+    ([key, value], skillIndex) => {
+      const processed = value.map((skill, index) => {
+        return (
+          <span id="skill" key={index} className="skill">
+            <b>&#8226;</b> {skill}
+          </span>
+        );
+      });
       return (
-        <span id="skill" key={index} className="skill">
-          {" "}
-          <b>&#8226;</b> {skill.name}
-        </span>
+        <div className="skill-category" key={skillIndex}>
+          <strong>{key} &nbsp;</strong>
+          <span>{processed}</span>
+        </div>
       );
-    });
-    DisplayAllSkills.push(
-      <div className="skill-category" key={count}>
-        <strong>{type} &nbsp;</strong>
-        <span>{processed}</span>
-      </div>
-    );
-    count += 1;
-  }
+    }
+  );
 
   return (
     <div className="introduction">
