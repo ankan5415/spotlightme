@@ -11,7 +11,7 @@ const CreateTags = (technologies, index) => {
 
   return tech.map((elt) => {
     return (
-      <span className='technology' key={index}>
+      <span className="technology" key={index}>
         {elt}
       </span>
     );
@@ -20,28 +20,27 @@ const CreateTags = (technologies, index) => {
 
 const GenerateStatuses = (props) => {
   let statuses = [];
-  let count = 0;
   let DisplayAllExperiences = [];
 
   const GenerateDIVs = (filtered) => {
     return filtered.map((desc, index) => {
       return (
-        <div className='exp-item' key={desc.name}>
-          <div className='job' key={`1${index}1`}>
-            <a className='company strike' href={desc.link} target='_blank'>
+        <div className="exp-item" key={desc.name}>
+          <div className="job" key={`1${index}1`}>
+            <a className="company strike" href={desc.link} target="_blank">
               {desc.name}
             </a>
 
             {desc.status === "Education" && (
               <div
-                className='title'
+                className="title"
                 key={desc.role ? desc.role : `${index}norole`}
               >
                 {desc.role}
               </div>
             )}
 
-            <div className='duration' key={`${index}${desc.startDate}`}>
+            <div className="duration" key={`${index}${desc.startDate}`}>
               {ConvertDate(desc.startDate)}
               {desc.status === "Project" &&
                 desc.end &&
@@ -51,7 +50,7 @@ const GenerateStatuses = (props) => {
             </div>
           </div>
           <div
-            className='description'
+            className="description"
             key={
               desc.description
                 ? desc.description.slice(0, 5)
@@ -82,15 +81,14 @@ const GenerateStatuses = (props) => {
 
     DisplayAllExperiences.push(
       <a value={isClicked} onClick={handleChange}>
-        <div className='experience'>
-          <div className={!isClicked && "clip-item"}>
+        <div className="experience">
+          <div className={(!isClicked || filtered.length <= 2) && "clip-item"}>
             <h4>{status}</h4>
-            <div className='content'>{processed}</div>
+            <div className="content">{processed}</div>
           </div>
         </div>
       </a>
     );
-    count += 1;
   }
 
   return DisplayAllExperiences;

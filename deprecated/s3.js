@@ -1,3 +1,5 @@
+// deprecated
+
 const AWS = require("aws-sdk");
 const helper = require("./helper");
 

@@ -369,7 +369,7 @@ a:hover {
 }
 
 .technology {
-  font-size: 12px;
+  font-size: 10px;
   padding: 2px 5px 2px 5px;
   margin: 3px;
   border: 1px solid #91d5ff;
@@ -380,14 +380,11 @@ a:hover {
 
 .clip-item {
   width: auto;
-  height: 100px;
+  height: 60vh;
   margin-bottom: 30px;
   overflow: hidden;
-  /* background: linear-gradient(to bottom, black, red); */
 
   mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
 
 .unclip-item {

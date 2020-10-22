@@ -7,7 +7,7 @@ frameworkVersion: "2"
 provider:
   name: aws
   runtime: nodejs12.x
-  region: us-west-1
+  region: us-east-1
 
 functions:
   app:
@@ -16,15 +16,30 @@ functions:
       - http: GET /
     environment:
       AIRTABLE_KEY: ${param:AIRTABLE_KEY}
-      ACCESS_KEY: ${param:ACCESS_KEY}
-      SECRET_KEY: ${param:SECRET_KEY}
-      BUCKET: ${param:BUCKET}
 
-    # iamRoleStatements:
-    #   - Effect: Allow
-    #   Action:
-    #     - s3:PutObject
-    #     - s3:DeleteObject
-    #     - s3:ListBucket
-    #     - s3:GetObject
-    #   Resource: arn:aws:s3::spotlightme
+resources:
+  Resources:
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Comment: Backend cache
+          DefaultCacheBehavior:
+            TargetOriginId: AirtableProxy
+            ViewerProtocolPolicy: "redirect-to-https"
+            DefaultTTL: 30
+            ForwardedValues:
+              QueryString: false
+          Enabled: true
+          Origins:
+            - Id: AirtableProxy
+              DomainName:
+                Fn::Join:
+                  - "."
+                  - - Ref: ApiGatewayRestApi
+                    - execute-api.us-east-1.amazonaws.com
+              OriginPath: /dev
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
