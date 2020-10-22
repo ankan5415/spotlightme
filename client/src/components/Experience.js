@@ -1,12 +1,12 @@
 import React from "react";
 import ShowMore from "./ShowMore";
 
-const ConvertDate = (DateString) => {
+const convertData = (DateString) => {
   const res = new Date(DateString);
   return res.toLocaleString("en-us", { month: "short", year: "numeric" });
 };
 
-const CreateTags = (technologies, index) => {
+const createTags = (technologies, index) => {
   const tech = technologies ? technologies.split(", ") : [];
 
   return tech.map((elt) => {
@@ -26,7 +26,7 @@ const GenerateStatuses = (props) => {
     return filtered.map((desc, index) => {
       return (
         <div className="exp-item" key={desc.name}>
-          <div className="job" key={`1${index}1`}>
+          <div className="job">
             <a className="company strike" href={desc.link} target="_blank">
               {desc.name}
             </a>
@@ -41,12 +41,12 @@ const GenerateStatuses = (props) => {
             )}
 
             <div className="duration" key={`${index}${desc.startDate}`}>
-              {ConvertDate(desc.startDate)}
+              {convertData(desc.startDate)}
               {desc.status === "Project" &&
                 desc.end &&
-                ` ~ ${ConvertDate(desc.end)}`}
+                ` ~ ${convertData(desc.end)}`}
               {desc.status === "Work" &&
-                (desc.end ? ` ~ ${ConvertDate(desc.end)}` : " ~ Present")}
+                (desc.end ? ` ~ ${convertData(desc.end)}` : " ~ Present")}
             </div>
           </div>
           <div
@@ -58,7 +58,7 @@ const GenerateStatuses = (props) => {
             }
           >
             <p>{desc.description}</p>
-            {CreateTags(desc.technologies, index)}
+            {createTags(desc.technologies, index)}
           </div>
         </div>
       );
