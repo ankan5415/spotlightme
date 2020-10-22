@@ -1,4 +1,5 @@
 import React from "react";
+import ShowMore from "./ShowMore";
 
 const ConvertDate = (DateString) => {
   const res = new Date(DateString);
@@ -25,42 +26,40 @@ const GenerateStatuses = (props) => {
   const GenerateDIVs = (filtered) => {
     return filtered.map((desc, index) => {
       return (
-        <div className='item2' key={index}>
-          <div className='exp-item' key={desc.name}>
-            <div className='job' key={`1${index}1`}>
-              <a className='company strike' href={desc.link} target='_blank'>
-                {desc.name}
-              </a>
+        <div className='exp-item' key={desc.name}>
+          <div className='job' key={`1${index}1`}>
+            <a className='company strike' href={desc.link} target='_blank'>
+              {desc.name}
+            </a>
 
-              {desc.status === "Education" && (
-                <div
-                  className='title'
-                  key={desc.role ? desc.role : `${index}norole`}
-                >
-                  {desc.role}
-                </div>
-              )}
-
-              <div className='duration' key={`${index}${desc.startDate}`}>
-                {ConvertDate(desc.startDate)}
-                {desc.status === "Project" &&
-                  desc.end &&
-                  ` ~ ${ConvertDate(desc.end)}`}
-                {desc.status === "Work" &&
-                  (desc.end ? ` ~ ${ConvertDate(desc.end)}` : " ~ Present")}
+            {desc.status === "Education" && (
+              <div
+                className='title'
+                key={desc.role ? desc.role : `${index}norole`}
+              >
+                {desc.role}
               </div>
+            )}
+
+            <div className='duration' key={`${index}${desc.startDate}`}>
+              {ConvertDate(desc.startDate)}
+              {desc.status === "Project" &&
+                desc.end &&
+                ` ~ ${ConvertDate(desc.end)}`}
+              {desc.status === "Work" &&
+                (desc.end ? ` ~ ${ConvertDate(desc.end)}` : " ~ Present")}
             </div>
-            <div
-              className='description'
-              key={
-                desc.description
-                  ? desc.description.slice(0, 5)
-                  : `nodescription${index}`
-              }
-            >
-              <p>{desc.description}</p>
-              {CreateTags(desc.technologies, index)}
-            </div>
+          </div>
+          <div
+            className='description'
+            key={
+              desc.description
+                ? desc.description.slice(0, 5)
+                : `nodescription${index}`
+            }
+          >
+            <p>{desc.description}</p>
+            {CreateTags(desc.technologies, index)}
           </div>
         </div>
       );
@@ -79,12 +78,17 @@ const GenerateStatuses = (props) => {
     );
 
     let processed = GenerateDIVs(filtered);
+    const [isClicked, handleChange] = ShowMore();
 
     DisplayAllExperiences.push(
-      <div className='experience'>
-        <h4>{status}</h4>
-        <div className='content'>{processed}</div>
-      </div>
+      <a value={isClicked} onClick={handleChange}>
+        <div className='experience'>
+          <div className={!isClicked && "clip-item"}>
+            <h4>{status}</h4>
+            <div className='content'>{processed}</div>
+          </div>
+        </div>
+      </a>
     );
     count += 1;
   }

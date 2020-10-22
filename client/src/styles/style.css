@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 .left,
 .right {
   width: 50%;
@@ -372,4 +376,21 @@ a {
   border-radius: 3px;
   background-color: #e6f7ff;
   color: #1890ff;
+}
+
+.clip-item {
+  width: auto;
+  height: 100px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  /* background: linear-gradient(to bottom, black, red); */
+
+  mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.unclip-item {
+  height: auto;
+  mask-image: linear-gradient(to bottom, black 50%, black 100%);
 }
