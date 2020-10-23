@@ -5,8 +5,6 @@ import SplitRight from "./components/SplitRight";
 
 import axios from "axios";
 export default function App() {
-  // Gather JSON Data
-
   const [data, setData] = useState({ about: [], experiences: [] });
 
   useEffect(() => {
@@ -17,7 +15,6 @@ export default function App() {
       setData(res.data);
     };
     fetchData();
-    return null;
   }, []);
 
   return (

@@ -11,6 +11,7 @@ body {
 
 a {
   text-decoration: none;
+  z-index: 3;
 }
 
 a:hover {
@@ -400,4 +401,8 @@ span.resume-box {
   margin: 10px;
   height: 200;
   background-color: #f5f5f5;
+}
+
+.experience-box:hover {
+  cursor: pointer;
 }

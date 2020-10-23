@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const generateSocials = (data) => {
   data = data.filter((data) => data.isIcon);
 
-  return data.map((item) => {
+  return data.map((item, index) => {
     return (
-      <a href={item.name} target="_blank">
+      <a href={item.name} key={index}>
         <FontAwesomeIcon icon={item.icon} className="fa" />
       </a>
     );
@@ -15,10 +15,10 @@ const generateSocials = (data) => {
 
 const generateButtons = (data) => {
   data = data.filter((data) => !data.isIcon);
-  return data.map((item) => {
+  return data.map((item, index) => {
     return (
-      <span className="resume-box">
-        <a href={item.name} target="_blank">
+      <span className="resume-box" key={index}>
+        <a href={item.name}>
           <span className="resume-link strike">{item.displayMethod}</span>
         </a>
       </span>
@@ -38,11 +38,12 @@ function SplitLeft(props) {
           data.hasOwnProperty("displayMethod") &&
           data.displayMethod.length > 0
       );
+
     temp.map((data) => {
       data.icon = data.displayMethod.split(", ");
+      return null;
     });
 
-    console.log(temp);
     setData(temp);
   }, [props]);
 

@@ -17,7 +17,7 @@ function About(props) {
 
   const DisplayAllSkills = Object.entries(data).map(
     ([key, value], skillIndex) => {
-      const processed = value.map((skill, index) => {
+      const domainSkills = value.map((skill, index) => {
         return (
           <span id="skill" key={index} className="skill">
             <b>&#8226;</b> {skill}
@@ -27,7 +27,7 @@ function About(props) {
       return (
         <div className="skill-category" key={skillIndex}>
           <strong>{key} &nbsp;</strong>
-          <span>{processed}</span>
+          <span>{domainSkills}</span>
         </div>
       );
     }
