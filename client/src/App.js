@@ -9,16 +9,14 @@ export default function App() {
 
   useEffect(() => {
     let fetchData = async () => {
-      let res = await axios.get(
-        "https://8evv535w4k.execute-api.us-east-1.amazonaws.com/dev"
-      );
+      let res = await axios.get("https://dfh1ezhmk1c4g.cloudfront.net/");
       setData(res.data);
     };
     fetchData();
   }, []);
 
   return (
-    <div className="app">
+    <div className='app'>
       <SplitLeft info={data.about} />
       <SplitRight info={data} />
     </div>
