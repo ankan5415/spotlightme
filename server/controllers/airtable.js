@@ -1,6 +1,6 @@
 const Airtable = require("airtable");
 const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
-  "appez3evloomAtLPX"
+  "appOzvbx6vQTyi8jA"
 );
 
 const getAboutData = () => {

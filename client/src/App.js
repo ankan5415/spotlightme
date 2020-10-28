@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SplitLeft from "./components/SplitLeft";
 import SplitRight from "./components/SplitRight";
+import Theme from "./components/Theme";
 // import Data from "./Data";
 
 import axios from "axios";
@@ -15,10 +16,12 @@ export default function App() {
     fetchData();
   }, []);
 
+  let [isDark, ChangeTheme] = Theme();
+
   return (
     <div className='app'>
-      <SplitLeft info={data.about} />
-      <SplitRight info={data} />
+      <SplitLeft info={data.about} isDark={isDark} ChangeTheme={ChangeTheme} />
+      <SplitRight info={data} isDark={isDark} />
     </div>
   );
 }

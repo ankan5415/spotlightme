@@ -9,6 +9,14 @@ body {
   letter-spacing: 0.3px;
 }
 
+.light-mode {
+  background-color: #fff;
+}
+
+.dark-mode {
+  background-color: #1f1f1f;
+  color: #bfbfbf;
+}
 a {
   text-decoration: none;
   z-index: 3;
@@ -56,7 +64,7 @@ a:hover {
   left: 0;
   background: #185a9d;
   background-image: linear-gradient(to left top, #43cea2, #185a9d);
-  opacity: 0.4;
+  opacity: 0.2;
 }
 
 .left-inner,
@@ -291,6 +299,10 @@ a:hover {
   font-style: italic;
 }
 
+.dark-mode .company {
+  color: #bfbfbf;
+}
+
 .right .projects .project-item {
   margin-bottom: 20px;
 }
@@ -375,8 +387,18 @@ a:hover {
   margin: 3px;
   border: 1px solid #91d5ff;
   border-radius: 3px;
-  background-color: #e6f7ff;
+  background-color: #fff;
   color: #1890ff;
+}
+
+.dark-mode .technology {
+  font-size: 10px;
+  padding: 2px 5px 2px 5px;
+  margin: 3px;
+  border: 1px solid #225d83;
+  border-radius: 3px;
+  background-color: #113d50;
+  color: #85acce;
 }
 
 .clip-item {
@@ -405,4 +427,30 @@ span.resume-box {
 
 .experience-box:hover {
   cursor: pointer;
+}
+.dark-mode .resume-box {
+  background-color: #1f1f1f;
+}
+button:hover,
+button:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+.theme-icon {
+  padding-top: 10px;
+  size: 20px;
+  /* margin: 90vh 0px 0px 22.5vw; */
+  background-color: transparent;
+  border: transparent;
+  z-index: 2;
+  font-size: 35px;
+  color: white;
+  transform: rotate(0deg);
+  transition: transform 0.25s linear;
+}
+
+.theme-icon.open {
+  transform: rotate(180deg);
+  transition: transform 0.25s linear;
 }
